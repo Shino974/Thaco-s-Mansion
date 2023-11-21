@@ -1,0 +1,14 @@
+{
+    "name": "Unity.[YourPackageName].[SubGroup].Editor.Tests",
+    "references": [
+        "Unity.[YourPackageName].[SubGroup].Editor",
+        "Unity.[YourPackageName].[SubGroup]"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}

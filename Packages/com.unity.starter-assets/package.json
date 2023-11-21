@@ -1,0 +1,19 @@
+{
+  "name": "com.unity.starter-assets",
+  "displayName": "Starter Assets",
+  "version": "0.1.0",
+  "unity": "2018.3",
+  "description": "A collections of assets and tools to help start new projects",
+  "dependencies": {
+    "com.unity.inputsystem": "1.3.0",
+    "com.unity.render-pipelines.universal": "12.1.6",
+    "com.unity.cinemachine": "2.9.5"
+  },
+  "samples": [
+    {
+      "displayName": "Controllers Sample",
+      "description": "Samples scenes of the First and Third person controllers",
+      "path": "Samples~/Controllers"
+    }
+  ]
+}

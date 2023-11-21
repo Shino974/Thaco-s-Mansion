@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="JoystickMove">
+        <ui:VisualElement name="JoystickBackground">
+            <ui:VisualElement name="JoystickHandle" picking-mode="Ignore" usage-hints="DynamicTransform" class="touchscreen-button">
+                <ui:VisualElement name="JoystickIcon" class="button-icon" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="JoystickLook">
+        <ui:VisualElement name="JoystickBackground">
+            <ui:VisualElement name="JoystickHandle" usage-hints="DynamicTransform" class="touchscreen-button">
+                <ui:VisualElement name="JoystickIcon" class="button-icon" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="ButtonJump" class="touchscreen-button">
+        <ui:VisualElement name="ButtonImage" class="button-icon" style="flex-grow: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ButtonSprint" class="touchscreen-button">
+        <ui:VisualElement name="ButtonImage" class="button-icon" style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>
