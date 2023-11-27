@@ -110,7 +110,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Exposure: 0.14
+    - _Exposure: 0.2
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -125,7 +125,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _SunDisk: 2
-    - _SunSize: 0.04
+    - _SunSize: 0
     - _SunSizeConvergence: 5
     - _Surface: 0
     - _WorkflowMode: 1
@@ -134,7 +134,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SkyTint: {r: 0, g: 0, b: 0, a: 1}
+    - _GroundColor: {r: 0.107645065, g: 0.109563865, b: 0.5566038, a: 1}
+    - _SkyTint: {r: 0.04387683, g: 0.0481105, b: 0.3207547, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

@@ -47,13 +47,13 @@ namespace UnityStandardAssets.Vehicles.Car
         private AudioSource m_HighAccel; // Source for the high acceleration sounds
         private AudioSource m_HighDecel; // Source for the high deceleration sounds
         private bool m_StartedSound; // flag for knowing if we have started sounds
-        private CarController m_CarController; // Reference to car we are controlling
+        //private CarController m_CarController; // Reference to car we are controlling
 
 
         private void StartSound()
         {
             // get the carcontroller ( this will not be null as we have require component)
-            m_CarController = GetComponent<CarController>();
+            //m_CarController = GetComponent<CarController>();
 
             // setup the simple audio source
             m_HighAccel = SetUpEngineAudioSource(highAccelClip);
@@ -87,7 +87,7 @@ namespace UnityStandardAssets.Vehicles.Car
         private void Update()
         {
             // get the distance to main camera
-            float camDist = (Camera.main.transform.position - transform.position).sqrMagnitude;
+            float camDist = 1;
 
             // stop sound if the object is beyond the maximum roll off distance
             if (m_StartedSound && camDist > maxRolloffDistance*maxRolloffDistance)
@@ -104,7 +104,7 @@ namespace UnityStandardAssets.Vehicles.Car
             if (m_StartedSound)
             {
                 // The pitch is interpolated between the min and max values, according to the car's revs.
-                float pitch = ULerp(lowPitchMin, lowPitchMax, m_CarController.Revs);
+                float pitch = 1;
 
                 // clamp to minimum pitch (note, not clamped to max for high revs while burning out)
                 pitch = Mathf.Min(lowPitchMax, pitch);
@@ -127,11 +127,11 @@ namespace UnityStandardAssets.Vehicles.Car
                     m_HighDecel.pitch = pitch*highPitchMultiplier*pitchMultiplier;
 
                     // get values for fading the sounds based on the acceleration
-                    float accFade = Mathf.Abs(m_CarController.AccelInput);
+                    float accFade = 1;
                     float decFade = 1 - accFade;
 
                     // get the high fade value based on the cars revs
-                    float highFade = Mathf.InverseLerp(0.2f, 0.8f, m_CarController.Revs);
+                    float highFade = 1;
                     float lowFade = 1 - highFade;
 
                     // adjust the values to be more realistic
