@@ -7,27 +7,42 @@ using TMPro;
 
 public class TextManager : MonoBehaviour
 {
-    public TMP_Text text;
+    public TMP_Text textLetter;
     public GameObject panelLetters;
-    
-    public string mondayLetter;
-    public string tuesdayLetter;
-    public string wednesdayLetter;
-    public string thursdayLetter;
-    public string fridayLetter;
-    public string saturdayLetter;
-    public string sundayLetter;
+    public TMP_Text textDial;
+    public GameObject panelDial;
+
+    public string[] textLetters;
 
     public void ShowText(string txt)
     {
         panelLetters.SetActive(true);
-        text.text = txt;
+        textLetter.text = txt;
+    }
+
+    public void ShowTextForSecondOnDial(string txt)
+    {
+        panelDial.SetActive(true);
+        textDial.text = txt;
+        StartCoroutine(nameof(HideTextAfterSeconds));
+    }
+
+    IEnumerator HideTextAfterSeconds()
+    {
+        yield return new WaitForSeconds(5);
+        HideTextOnDial();
     }
 
     public void HideText()
     {
         panelLetters.SetActive(false);
-        text.text = "";
+        textLetter.text = "";
+    }
+    
+    public void HideTextOnDial()
+    {
+        panelDial.SetActive(false);
+        textLetter.text = "";
     }
 
     private void Update()
