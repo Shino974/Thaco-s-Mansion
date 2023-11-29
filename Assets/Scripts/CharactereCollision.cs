@@ -32,5 +32,16 @@ public class CharactereCollision : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+        if (other.gameObject.CompareTag("toDestroy"))
+        {
+            other.gameObject.GetComponent<ToDoScript>().DisableObject();
+            Destroy(other);
+        }
+        
+        if (other.gameObject.CompareTag("toScare"))
+        {
+            other.gameObject.GetComponent<ToDoScript>().ActivateObject();
+            Destroy(other);
+        }
     }
 }

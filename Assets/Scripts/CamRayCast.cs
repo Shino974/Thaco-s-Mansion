@@ -9,6 +9,7 @@ public class CamRayCast : MonoBehaviour
     private Outline ol;
     public TextManager textManager;
     public AudioClip paperSFX;
+    public AudioClip reloadSFX;
 
     private void Update()
     {
@@ -43,6 +44,7 @@ public class CamRayCast : MonoBehaviour
                 if (hittenGameObject.CompareTag("battery"))
                 {
                     GameObject.Find("GameManager").GetComponent<BatteryHandler>().ReloadBattery();
+                    GetComponent<AudioSource>().PlayOneShot(reloadSFX);
                 }
                 else
                 {
@@ -71,7 +73,7 @@ public class CamRayCast : MonoBehaviour
                         case "SundayLetter":
                             textManager.ShowText(textManager.textLetters[6]);
                             break;
-                }
+                    }
                 }
             }
         }

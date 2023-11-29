@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - letters
   - battery
+  - toDestroy
+  - toScare
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,4 @@ using UnityEngine;
 public class InventoryScript : MonoBehaviour
 {
     public static int lettersCount = 0;
-    
-    
 }
