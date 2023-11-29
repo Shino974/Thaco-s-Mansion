@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - letters
+  - battery
   layers:
   - Default
   - TransparentFX

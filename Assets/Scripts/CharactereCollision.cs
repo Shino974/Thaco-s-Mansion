@@ -21,7 +21,7 @@ public class CharactereCollision : MonoBehaviour
             {
                 tm.ShowTextForSecondOnDial("Need to find all indice");
             }
-            else if (InventoryScript.lettersCount == 5)
+            else if (InventoryScript.lettersCount == 5 || InventoryScript.lettersCount == 6)
             {
                 tm.ShowTextForSecondOnDial("Bad Ending");
                 Destroy(other.gameObject);

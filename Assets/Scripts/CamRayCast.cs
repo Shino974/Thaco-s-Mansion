@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class CamRayCast : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class CamRayCast : MonoBehaviour
     public TextManager textManager;
     public AudioClip paperSFX;
 
-    private void FixedUpdate()
+    private void Update()
     {
         RaycastHit hit;
         GameObject hittenGameObject;
@@ -17,6 +18,12 @@ public class CamRayCast : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
             if (hit.transform.gameObject.CompareTag("letters"))
+            {
+                hittenGameObject = hit.transform.gameObject;
+                ol = hittenGameObject.GetComponent<Outline>();
+                ol.enabled = true;
+            }
+            else if (hit.transform.gameObject.CompareTag("battery"))
             {
                 hittenGameObject = hit.transform.gameObject;
                 ol = hittenGameObject.GetComponent<Outline>();
@@ -30,34 +37,41 @@ public class CamRayCast : MonoBehaviour
                 ol = null;
             }
 
-            if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)) && hittenGameObject != null)
+            if (Input.GetKeyUp(KeyCode.E) && hittenGameObject != null)
             {
                 Destroy(hittenGameObject);
-                InventoryScript.lettersCount++;
-                GetComponent<AudioSource>().PlayOneShot(paperSFX);
-                switch (hittenGameObject.name)
+                if (hittenGameObject.CompareTag("battery"))
                 {
-                    case "MondayLetter":
-                        textManager.ShowText(textManager.textLetters[0]);
-                        break;
-                    case "TuesdayLetter":
-                        textManager.ShowText(textManager.textLetters[1]);
-                        break;
-                    case "WednesdayLetter":
-                        textManager.ShowText(textManager.textLetters[2]);
-                        break;
-                    case "ThursdayLetter":
-                        textManager.ShowText(textManager.textLetters[3]);
-                        break;
-                    case "FridayLetter":
-                        textManager.ShowText(textManager.textLetters[4]);
-                        break;
-                    case "SaturdayLetter":
-                        textManager.ShowText(textManager.textLetters[5]);
-                        break;
-                    case "SundayLetter":
-                        textManager.ShowText(textManager.textLetters[6]);
-                        break;
+                    GameObject.Find("GameManager").GetComponent<BatteryHandler>().ReloadBattery();
+                }
+                else
+                {
+                    InventoryScript.lettersCount++;
+                    GetComponent<AudioSource>().PlayOneShot(paperSFX);
+                    switch (hittenGameObject.name)
+                    {
+                        case "MondayLetter":
+                            textManager.ShowText(textManager.textLetters[0]);
+                            break;
+                        case "TuesdayLetter":
+                            textManager.ShowText(textManager.textLetters[1]);
+                            break;
+                        case "WednesdayLetter":
+                            textManager.ShowText(textManager.textLetters[2]);
+                            break;
+                        case "ThursdayLetter":
+                            textManager.ShowText(textManager.textLetters[3]);
+                            break;
+                        case "FridayLetter":
+                            textManager.ShowText(textManager.textLetters[4]);
+                            break;
+                        case "SaturdayLetter":
+                            textManager.ShowText(textManager.textLetters[5]);
+                            break;
+                        case "SundayLetter":
+                            textManager.ShowText(textManager.textLetters[6]);
+                            break;
+                }
                 }
             }
         }
