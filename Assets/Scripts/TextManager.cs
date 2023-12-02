@@ -47,7 +47,7 @@ public class TextManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             HideText();
         }

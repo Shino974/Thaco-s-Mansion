@@ -14,7 +14,7 @@ public class BatteryHandler : MonoBehaviour
     
     private void Start()
     {
-        InvokeRepeating("UserBattery", 32, 1);
+        InvokeRepeating("UseBattery", 32, 1);
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class BatteryHandler : MonoBehaviour
         }
     }
     
-    public void UserBattery()
+    public void UseBattery()
     {
         if (flashLightIsActive == true && batteryLevel > 0)
         {

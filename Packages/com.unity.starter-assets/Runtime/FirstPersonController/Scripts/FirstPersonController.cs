@@ -52,9 +52,10 @@ namespace StarterAssets
 		public float BottomClamp = -90.0f;
 
 		// FootStep
-		public AudioClip[] FootstepAudioClips;
-		[Range(0, 1)] public float FootstepAudioVolume = 0.5f;
-		
+		[SerializeField] private AudioSource footstepAudioSource;
+		[SerializeField] private AudioClip footstepSound;
+		private bool isMoving = false;
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -118,6 +119,7 @@ namespace StarterAssets
 		{
 			JumpAndGravity();
 			GroundedCheck();
+			Move();
 			Move();
 		}
 
@@ -196,6 +198,22 @@ namespace StarterAssets
 			{
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+
+				// Check if the player is starting to move
+				if (!isMoving)
+				{
+					PlayFootstepSound();
+					isMoving = true;
+				}
+			}
+			else
+			{
+				// Check if the player is stopping
+				if (isMoving)
+				{
+					StopFootstepSound();
+					isMoving = false;
+				}
 			}
 
 			// move the player
@@ -256,17 +274,31 @@ namespace StarterAssets
 			return Mathf.Clamp(lfAngle, lfMin, lfMax);
 		}
 		
-		private void OnFootstep(AnimationEvent animationEvent)
+		private void PlayFootstepSound()
 		{
-			if (animationEvent.animatorClipInfo.weight > 0.5f)
+			if (footstepAudioSource != null && footstepSound != null)
 			{
-				if (FootstepAudioClips.Length > 0)
-				{
-					var index = Random.Range(0, FootstepAudioClips.Length);
-					AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
-				}
+				// Arrête la lecture du son actuel (utile si la boucle est déjà en cours)
+				footstepAudioSource.Stop();
+
+				// Configure le nouveau son
+				footstepAudioSource.clip = footstepSound;
+
+				// Démarre la lecture en boucle
+				footstepAudioSource.loop = true;
+				footstepAudioSource.pitch = 0.5f;
+				footstepAudioSource.Play();
 			}
 		}
+		
+		private void StopFootstepSound()
+		{
+			if (footstepAudioSource != null)
+			{
+				footstepAudioSource.Stop();
+			}
+		}
+
 		
 		private void OnDrawGizmosSelected()
 		{
