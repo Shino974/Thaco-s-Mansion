@@ -11,9 +11,17 @@ public class TextManager : MonoBehaviour
     public GameObject panelLetters;
     public TMP_Text textDial;
     public GameObject panelDial;
+    public GameObject panelDoll;
+    public TMP_Text doll_TMP;
 
     public string[] textLetters;
 
+    public void ShowDollText()
+    {
+        panelDoll.SetActive(true);
+        doll_TMP.text = "Emily's Doll !";
+    }
+    
     public void ShowText(string txt)
     {
         panelLetters.SetActive(true);
@@ -35,6 +43,7 @@ public class TextManager : MonoBehaviour
 
     public void HideText()
     {
+        panelDoll.SetActive(false);
         panelLetters.SetActive(false);
         textLetter.text = "";
     }

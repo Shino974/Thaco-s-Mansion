@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharactereCollision : MonoBehaviour
 {
@@ -24,12 +25,12 @@ public class CharactereCollision : MonoBehaviour
             else if (InventoryScript.lettersCount == 5 || InventoryScript.lettersCount == 6)
             {
                 tm.ShowTextForSecondOnDial("Bad Ending");
-                Destroy(other.gameObject);
+                SceneManager.LoadScene("EndGame2");
             }
             else if (InventoryScript.lettersCount == 7)
             {
                 tm.ShowTextForSecondOnDial("True Ending");
-                Destroy(other.gameObject);
+                SceneManager.LoadScene("EndGame");
             }
         }
         if (other.gameObject.CompareTag("toDestroy"))

@@ -9,6 +9,7 @@ TagManager:
   - battery
   - toDestroy
   - toScare
+  - doll
   layers:
   - Default
   - TransparentFX

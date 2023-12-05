@@ -10,6 +10,7 @@ public class CamRayCast : MonoBehaviour
     public TextManager textManager;
     public AudioClip paperSFX;
     public AudioClip reloadSFX;
+    private bool isPaused;
 
     private void Update()
     {
@@ -30,6 +31,12 @@ public class CamRayCast : MonoBehaviour
                 ol = hittenGameObject.GetComponent<Outline>();
                 ol.enabled = true;
             }
+            else if (hit.transform.gameObject.CompareTag("doll"))
+            {
+                hittenGameObject = hit.transform.gameObject;
+                ol = hittenGameObject.GetComponent<Outline>();
+                ol.enabled = true;
+            }
             else
             {
                 hittenGameObject = null;
@@ -45,6 +52,10 @@ public class CamRayCast : MonoBehaviour
                 {
                     GameObject.Find("GameManager").GetComponent<BatteryHandler>().ReloadBattery();
                     GetComponent<AudioSource>().PlayOneShot(reloadSFX);
+                }
+                else if (hittenGameObject.CompareTag("doll"))
+                {
+                    textManager.ShowDollText();
                 }
                 else
                 {

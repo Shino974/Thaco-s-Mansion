@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Vehicles.Car
@@ -47,6 +48,7 @@ namespace UnityStandardAssets.Vehicles.Car
         private AudioSource m_HighAccel; // Source for the high acceleration sounds
         private AudioSource m_HighDecel; // Source for the high deceleration sounds
         private bool m_StartedSound; // flag for knowing if we have started sounds
+        public AudioMixer am;
         //private CarController m_CarController; // Reference to car we are controlling
 
 
@@ -160,7 +162,9 @@ namespace UnityStandardAssets.Vehicles.Car
         private AudioSource SetUpEngineAudioSource(AudioClip clip)
         {
             // create the new audio source component on the game object and set up its properties
+            AudioMixerGroup sfxGroup = am.FindMatchingGroups("Master/Sfx")[0];
             AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.outputAudioMixerGroup = sfxGroup;
             source.clip = clip;
             source.volume = 0;
             source.loop = true;
