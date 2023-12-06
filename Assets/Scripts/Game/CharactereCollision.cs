@@ -24,12 +24,10 @@ public class CharactereCollision : MonoBehaviour
             }
             else if (InventoryScript.lettersCount == 5 || InventoryScript.lettersCount == 6)
             {
-                tm.ShowTextForSecondOnDial("Bad Ending");
                 SceneManager.LoadScene("EndGame2");
             }
             else if (InventoryScript.lettersCount == 7)
             {
-                tm.ShowTextForSecondOnDial("True Ending");
                 SceneManager.LoadScene("EndGame");
             }
         }
